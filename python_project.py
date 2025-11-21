@@ -1,12 +1,9 @@
 class StudyTaskPrioritizer:
-    
 
     def __init__(self):
-        
         self.tasks = []
 
     def _get_valid_score(self, prompt):
-       
         while True:
             try:
                 score = int(input(prompt))
@@ -18,19 +15,11 @@ class StudyTaskPrioritizer:
                 print(" Invalid input. Please enter a number.")
 
     def add_task_interactive(self):
-        
         print("\n-- Add New Task ---")
         name = input("Enter the task description: ")
+        importance = self._get_valid_score("Enter Importance (1=Low, 5=High): ")
+        urgency = self._get_valid_score("Enter Urgency (1=Low, 5=High): ")
 
-        importance = self._get_valid_score(
-            "Enter Importance (1=Low, 5=High): "
-        )
-
-        urgency = self._get_valid_score(
-            "Enter Urgency (1=Low, 5=High): "
-        )
-
-        
         priority_score = importance * urgency
 
         task = {
@@ -44,13 +33,10 @@ class StudyTaskPrioritizer:
         print("-" * 25)
 
     def prioritize_tasks(self):
-       
-        
         self.tasks.sort(key=lambda task: task['priority_score'], reverse=True)
         print("\n Tasks prioritized successfully!")
 
     def display_tasks(self):
-        
         if not self.tasks:
             print("\n No tasks currently in the list. Add some study tasks!")
             return
@@ -71,7 +57,6 @@ class StudyTaskPrioritizer:
         print("-" * 78)
 
     def get_top_priority_task(self):
-       
         if not self.tasks:
             return "No tasks in the list."
 
@@ -84,7 +69,6 @@ class StudyTaskPrioritizer:
         print("   -> Focus on this task first!")
 
     def run_assistant(self):
-       
         while True:
             print("\n--- Time Management Assistant Menu ---")
             print("1. Add a new task")
